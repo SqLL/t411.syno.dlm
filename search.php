@@ -1,9 +1,9 @@
 <?php
 class SynoDLMSearchT411 {
-    private $aurl = 'https://api.t411.ch/auth'; //auth url
-    private $qurl = 'https://api.t411.ch/torrents/search/'; // search url
+    private $aurl = 'https://api.t411.li/auth'; //auth url
+    private $qurl = 'https://api.t411.li/torrents/search/'; // search url
     private $dlurl = 'https://127.0.0.1/t411.syno.php'; // torrent download url
-    private $purl = 'https://www.t411.ch/torrents/'; // torrent page url
+    private $purl = 'https://www.t411.li/torrents/'; // torrent page url
 
     // go throw all results
     private $limit = 100;
@@ -33,7 +33,7 @@ class SynoDLMSearchT411 {
         curl_setopt($ch, CURLOPT_URL, $this->aurl);
         curl_setopt($ch,CURLOPT_POST, 2);
         curl_setopt($ch,CURLOPT_POSTFIELDS, $auth);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $body = curl_exec($ch);
         curl_close($ch);
@@ -65,12 +65,12 @@ class SynoDLMSearchT411 {
     }
 
 
-    public function prepare($curl, $query, $username, $password) { 
+    public function prepare($curl, $query, $username, $password) {
         $this->DebugLog('prepare:');
         $this->DebugLog('   username: '.$username);
         $this->DebugLog('   username: '.$username);
         $this->DebugLog('   query: '.$query);
-        
+
         $url = $this->qurl . urlencode($query) . '?offset=0&limit=' . $this->limit;
         $this->DebugLog('    url: ' . $url);
 
